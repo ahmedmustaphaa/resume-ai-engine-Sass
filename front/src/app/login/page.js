@@ -33,6 +33,8 @@ function Login() {
             if (data.success) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('name',data.name)
+    
+window.dispatchEvent(new Event("storage"));
                 router.push('/');
             } else {
                 alert(data.message || "Something went wrong");
