@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. إعدادات الصور لضمان عملها بعد الـ Export
+  // 1. إعدادات الصور (خلينا unoptimized عشان تشتغل في أي بيئة)
   images: {
     unoptimized: true, 
     remotePatterns: [
@@ -21,7 +21,7 @@ const nextConfig = {
     return config;
   },
 
-  // 3. تجاهل أخطاء التنسيق والبرمجة أثناء الـ Build عشان ما يوقفش
+  // 3. تجاهل أخطاء التنسيق والبرمجة عشان الـ Build يكمل للآخر
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -29,8 +29,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
-  // 4. السطر السحري اللي هيطلع فولدر out لـ Netlify
-  output: 'export', 
+  // ملحوظة: شيلنا سطر output: 'export' عشان نتحاشى أخطاء الـ Dynamic Routes في Netlify
 };
 
 export default nextConfig;

@@ -32,13 +32,7 @@ import TempleteSelector from "@/app/pages/TempleteSelector";
 import ColorPicker from "@/app/pages/ColorBicker";
 import { api } from "@/app/utils/api";
 
-// ده بيعرف Next.js إن فيه صفحة افتراضية للـ Build عشان ما يوقفش
-export function generateStaticParams() {
-  return [{ id: 'default' }]; 
-}
 
-// السطر ده بيخلي الصفحات التانية تفتح عادي وقت الـ Runtime (لو فيه Backend)
-export const dynamicParams = true;
 function Page() {
   const { id } = useParams();
 
