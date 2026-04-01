@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. إعدادات الصور (دمجناهم في مكان واحد عشان م يحصلش تضارب)
+  // 1. إعدادات الصور لضمان عملها بعد الـ Export
   images: {
     unoptimized: true, 
     remotePatterns: [
@@ -15,24 +15,22 @@ const nextConfig = {
     ],
   },
 
-  // 2. حل مشكلة مكتبة Canvas و PDF لو موجودة
+  // 2. حل مشكلة مكتبة Canvas و PDF
   webpack: (config) => {
     config.resolve.alias.canvas = false;
     return config;
   },
 
-  // 3. السطرين دول "السم" اللي هيقتل أي Error بيوقف الـ Build
+  // 3. تجاهل أخطاء التنسيق والبرمجة أثناء الـ Build عشان ما يوقفش
   eslint: {
-    // هيطنش أي غلطة تنسيق (Linter)
     ignoreDuringBuilds: true,
   },
   typescript: {
-    // هيطنش أي غلطة في أنواع البيانات (Types)
     ignoreBuildErrors: true,
   },
 
-  // 4. عشان لو بترفع "Static" لـ Surge أو غيره (اختياري بس أمان)
-  // output: 'export', 
+  // 4. السطر السحري اللي هيطلع فولدر out لـ Netlify
+  output: 'export', 
 };
 
 export default nextConfig;
