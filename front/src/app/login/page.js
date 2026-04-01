@@ -34,7 +34,8 @@ function Login() {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('name',data.name)
     
-window.dispatchEvent(new Event("storage"));
+window.dispatchEvent(new Event("storage"));     // عشان لو فاتح تابات تانية
+    window.dispatchEvent(new Event("auth-change")); // عشان النافبار اللي في نفس الصفحة يحس فوراً
                 router.push('/');
             } else {
                 alert(data.message || "Something went wrong");
